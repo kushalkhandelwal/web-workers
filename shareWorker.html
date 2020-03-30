@@ -8,17 +8,23 @@
 
 <body>
     <div>
-        <h1>使用shareWorkder:</h1>
+        <h1>shareWorkder:</h1>
     </div>
-    <button style="padding: 10px; margin: 10px 0;">biu~ 一下</button>
+    <button style="padding: 10px; margin: 10px 0;" class="start">Start worker</button>
+    <br />
+    <button style="padding: 10px; margin: 10px 0;" class="stop">Stop worker</button>
     <div>
-        <span>一共Biu了 <span class="time">-</span> 下</span>
+        <span>Time since started<span class="time">-</span> sec</span>
 
     </div>
 
     <script>
         //
-        let button = document.querySelector('button');
+        if(!SharedWorker){
+            alert("page does not support shared worker")
+           }
+        let button = document.querySelector('.start');
+        let button2 = document.querySelector('.stop');
 
         let worker = new SharedWorker('sharedworkers.js');
         worker.port.start();
